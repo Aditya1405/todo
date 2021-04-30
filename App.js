@@ -1,21 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {createAppContainer} from 'react-navigation'; 
+import {createStackNavigator} from 'react-navigation-stack';
+import Boilerplate from './src/screens/Boilerplate'
+import TodayTask from './src/screens/TodayTask'
+const nav = createStackNavigator({
+  Tt:TodayTask,
+  Bp:Boilerplate
+},{
+  InitialRouteName:'Tt',
+  defaultNavigationOptions:{
+    title:'TO-DO'
+  }
+})
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+const App = createAppContainer(nav)
+
+export default function(){
+  return(
+    <App/>
+  )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
